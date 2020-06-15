@@ -1,17 +1,33 @@
 package config
 
 import (
-	"belajar_go_restapi/structs"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/haqim007/dairy_v0.1/structs"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/joho/godotenv"
 )
 
 //DBInit create connection to database
 func DBInit() *gorm.DB {
-	db, err := gorm.Open("mysql", "root:@/gorestapidb?charset=utf8&parseTime=True&loc=Local")
+	var errEnv error
+	errEnv = godotenv.Load()
+	if errEnv != nil {
+		log.Fatalf("Error getting env, not comming through %v", errEnv)
+	} else {
+		fmt.Println("We are getting the env values")
+	}
+	// fmt.Println("host=" + os.Getenv("DB_HOST") + " port=" + os.Getenv("DB_PORT") + " user=" + os.Getenv("DB_USER") + " dbname=" + os.Getenv("DB_NAME") + " password=" + os.Getenv("DB_PASSWORD"))
+	db, err := gorm.Open("postgres", "host="+os.Getenv("DB_HOST")+" sslmode=disable port="+os.Getenv("DB_PORT")+" user="+os.Getenv("DB_USER")+" dbname="+os.Getenv("DB_NAME")+" password="+os.Getenv("DB_PASSWORD"))
+	db.LogMode(true)
 	if err != nil {
-		panic("failed to connect database")
+		panic(err)
 	}
 
-	db.AutoMigrate(structs.Person{})
+	db.AutoMigrate(structs.User{}, structs.UserSession{}, structs.Diary{})
+
 	return db
 }

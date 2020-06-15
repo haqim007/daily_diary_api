@@ -1,11 +1,12 @@
 package main
 
 import (
-	"belajar_go_restapi/config"
-	"belajar_go_restapi/controllers"
+	"github.com/haqim007/dairy_v0.1/config"
+	"github.com/haqim007/dairy_v0.1/controllers"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/go-sql-driver/mysql"
+	// _ "github.com/go-sql-driver/mysql"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func main() {
@@ -14,10 +15,11 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/person/:id", inDB.GetPerson)
-	router.GET("/persons", inDB.GetPersons)
-	router.POST("/person", inDB.CreatePerson)
-	router.PUT("/person", inDB.UpdatePerson)
-	router.DELETE("/person/:id", inDB.DeletePerson)
+	router.POST("/signup", inDB.CreateUser)
+	router.POST("/login", inDB.GetUser)
+
+	router.POST("/add_diary", inDB.CreateDiary)
+	router.POST("/get_diary", inDB.GetDiaries)
+
 	router.Run(":3000")
 }

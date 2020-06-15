@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "c45f8bda-3cc1-4711-922c-5824cc076a44",
+		"name": "API Daily Diary",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"Hello123_\",\n    \"email\": \"haqim1@mail.com\",\n    \"username\": \"haqim008\",\n    \"birthday\": \"1998-03-15\",\n    \"fullname\": \"haqim\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"Hello123_\",\n    \"username\": \"haqim@mail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/add_diary",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"access_token\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE1OTIyNDk1MTgsInVzZXJfaWQiOjF9.CLE4an4geOrZjLDZr36Qadbny_BKP6cWo18dovuNtDI\",\n\t\"date\": \"2019-07-11\",\n\t\"content\": \"Hari yang menyenangkan mantap\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/add_diary",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"add_diary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/get_diary?quarter=3&year=2019",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"access_token\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE1OTIyNDk1MTgsInVzZXJfaWQiOjF9.CLE4an4geOrZjLDZr36Qadbny_BKP6cWo18dovuNtDI\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/get_diary?quarter=3&year=2019",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get_diary"
+					],
+					"query": [
+						{
+							"key": "quarter",
+							"value": "3"
+						},
+						{
+							"key": "year",
+							"value": "2019"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
