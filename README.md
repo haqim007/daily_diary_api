@@ -6,3 +6,4 @@
 3. Extract application inside folder github.com/haqim007/(this_app)
 4. Run 
     `go build base.go` or just `go run base.go`
+5. Check usage example using postman collection
